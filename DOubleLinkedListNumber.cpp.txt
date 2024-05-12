@@ -1,0 +1,28 @@
+class Solution {
+public:
+
+  int MUltiplyHead( ListNode* head){
+        
+          if(head  ==  NULL) return 0;
+          int carry  =  MUltiplyHead(head->next);
+          int NewVal  =  head->val * 2 + carry;
+          head->val  =  NewVal % 10;
+          return NewVal/10;
+
+  }
+    ListNode* doubleIt(ListNode* head) {
+
+        int carryComing  = MUltiplyHead(head);
+        if(carryComing){
+              ListNode*carryhead =  new ListNode(carryComing);
+              carryhead->next =  head;
+              return carryhead;
+
+        }
+
+        return head;
+
+
+        
+    }
+};
